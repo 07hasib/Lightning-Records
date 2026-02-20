@@ -1,0 +1,41 @@
+{
+  "manifest_version": 3,
+  "name": "Lightning Record Insert",
+  "version": "1.0",
+  "description": "Chrome extension for creating multiple Salesforce records with a user-friendly interface",
+  "permissions": [
+    "tabs",
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://*.salesforce.com/*",
+    "https://*.force.com/*",
+    "https://login.salesforce.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*.salesforce.com/*", "https://*.force.com/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "action": {
+    "default_title": "Salesforce Record Insert"
+  },
+  "icons": {
+    "16": "assets/icons/lighting.png",
+    "32": "assets/icons/lighting.png",
+    "48": "assets/icons/lighting.png",
+    "128": "assets/icons/lighting.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["pages/*", "assets/*"],
+      "matches": ["https://*.salesforce.com/*", "https://*.force.com/*"]
+    }
+  ]
+}
